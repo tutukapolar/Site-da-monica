@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Perícia - Cena do Crime</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: 'Courier New', Courier, monospace; 
+      max-width: 650px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      background-color: #121212; 
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    
+    /* CABEÇALHO CENA DO CRIME */
+    .header-crime {
+      text-align: center;
+      border: 4px double #ff3333;
+      padding: 15px 10px;
+      margin-bottom: 25px;
+      background-color: #1a0000;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+    .header-crime h1 {
+      color: #ff3333;
+      font-size: 2.2rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 900;
+    }
+    .header-crime p {
+      color: #aaaaaa;
+      margin: 5px 0 0 0;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    /* ENUNCIADO DO RELATÓRIO */
+    .enunciado {
+      background-color: #1e1e1e;
+      border-left: 4px solid #ff3333;
+      padding: 15px;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .campo { margin-bottom: 20px; }
+    label { 
+      font-weight: bold; 
+      display: block; 
+      margin-bottom: 6px; 
+      color: #ff6666;
+      letter-spacing: 1px;
+    }
+    input[type="text"], textarea { 
+      width: 100%; 
+      padding: 12px; 
+      background-color: #262626; 
+      border: 1px solid #444; 
+      color: #fff; 
+      font-family: inherit;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: #ff3333;
+      box-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+    }
+    
+    button { 
+      width: 100%;
+      background: #ff3333; 
+      color: #fff; 
+      padding: 14px; 
+      border: none; 
+      cursor: pointer; 
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: bold; 
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+    button:hover { background: #cc0000; }
+
+    /* CONTAINER RESPONSIVO PARA O VÍDEO DO YOUTUBE */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin-bottom: 25px;
+      border: 2px solid #ff3333;
+      border-radius: 4px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* AVISO DO VÍDEO NO FINAL DA PÁGINA */
+    .aviso-video {
+      margin-top: 35px;
+      padding: 15px;
+      background-color: #1a1a00;
+      border: 1px dashed #ffcc00;
+      color: #ffcc00;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO PRINCIPAL -->
+  <div class="header-crime">
+    <h1>CENA DO CRIME</h1>
+    <p>— DEPARTAMENTO DE PERÍCIA —</p>
+  </div>
+
+  <!-- SEÇÃO DO FORMULÁRIO (Exibida antes da data marcada) -->
+  <div id="secao-formulario">
+    <div class="enunciado">
+      <strong>INSTRUÇÕES DE CAMPO:</strong><br>
+      Preencha o relatório de perícia abaixo com base em suas observações da cena do crime. Suas respostas serão enviadas para análise oficial.
+    </div>
+
+    <!-- Substitua "SEU_ENDPOINT_AQUI" pela sua chave do Formspree -->
+    <form action= "https://formspree.io/f/mgaepzod" method="POST">
+      <div class="campo">
+        <label for="p1">1. ALGUÉM MORREU?</label>
+        <input type="text" id="p1" name="alguem_morreu" required placeholder="Sim / Não">
+      </div>
+
+      <div class="campo">
+        <label for="p2">2. QUEM?</label>
+        <input type="text" id="p2" name="quem" required placeholder="Nome ou identificação da vítima">
+      </div>
+
+      <div class="campo">
+        <label for="p3">3. COMO?</label>
+        <textarea id="p3" name="como" rows="3" required placeholder="Descreva a causa provável ou o método..."></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="p4">4. POR QUÊ?</label>
+        <textarea id="p4" name="por_que" rows="3" required placeholder="Descreva a motivação estimada..."></textarea>
+      </div>
+
+      <button type="submit">ENVIAR RELATÓRIO</button>
+    </form>
+  </div>
+  <!-- SEÇÃO DO VÍDEO REVELADO (Exibida a partir da data marcada) -->
+  <div id="secao-respostas" style="display: none;">
+    <div class="enunciado" style="border-left-color: #ff3333;">
+      <strong>RELATÓRIO EM VÍDEO DA PERÍCIA:</strong><br>
+      A resolução oficial do caso já está disponível. Clique no botão abaixo para assistir ao vídeo do relatório.
+    </div>
+
+    <!-- BOTÃO ESTILIZADO PARA ABRIR NO YOUTUBE -->
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="https://www.youtube.com/watch?v=jVbciqLZKcc" target="_blank" style="
+        display: inline-block;
+        width: 100%;
+        background-color: #ff0000;
+        color: #ffffff;
+        padding: 16px 20px;
+        font-family: inherit;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+      ">
+        ▶ ASSISTIR VÍDEO NO YOUTUBE
+      </a>
+    </div>
+  </div>
+
+  <!-- AVISO NO FINAL DA PÁGINA -->
+  <div class="aviso-video">
+    ⚠️ ATENÇÃO: O VÍDEO DA PERÍCIA SERÁ LIBERADO NO DIA 15/09!
+  </div>
+
+  <!-- LÓGICA DE TROCA AUTOMÁTICA -->
+  <script>
+    // Configurado para troca automática na Segunda-feira, 14 de Setembro de 2026
+    const dataRevelacao = new Date(2026, 8, 4, 0, 0, 0); 
+    const agora = new Date();
+
+    if (agora >= dataRevelacao) {
+      document.getElementById('secao-formulario').style.display = 'none';
+      document.getElementById('secao-respostas').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
