@@ -89,27 +89,24 @@
     }
     button:hover { background: #cc0000; }
 
-    /* ESTILO DOS BOTÕES DE LINK */
-    .btn-link {
-      display: inline-block;
-      width: 100%;
-      background-color: #ff0000;
-      color: #ffffff;
-      padding: 16px 20px;
-      font-family: inherit;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    /* CONTAINER RESPONSIVO PARA O VÍDEO DO YOUTUBE */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin-bottom: 25px;
+      border: 2px solid #ff3333;
       border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
-      margin-bottom: 15px;
-      text-align: center;
-      transition: background-color 0.2s;
     }
-    .btn-link:hover {
-      background-color: #cc0000;
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     /* AVISO DO VÍDEO NO FINAL DA PÁGINA */
@@ -141,7 +138,8 @@
       Preencha o relatório de perícia abaixo com base em suas observações da cena do crime. Suas respostas serão enviadas para análise oficial.
     </div>
 
-    <form action="https://formspree.io/f/mgaepzod" method="POST">
+    <!-- Substitua "SEU_ENDPOINT_AQUI" pela sua chave do Formspree -->
+    <form action= "https://formspree.io/f/mgaepzod" method="POST">
       <div class="campo">
         <label for="p1">1. ALGUÉM MORREU?</label>
         <input type="text" id="p1" name="alguem_morreu" required placeholder="Sim / Não">
@@ -165,24 +163,31 @@
       <button type="submit">ENVIAR RELATÓRIO</button>
     </form>
   </div>
-
-  <!-- SEÇÃO REVELADA (Exibida a partir da data marcada) -->
+  <!-- SEÇÃO DO VÍDEO REVELADO (Exibida a partir da data marcada) -->
   <div id="secao-respostas" style="display: none;">
     <div class="enunciado" style="border-left-color: #ff3333;">
       <strong>RELATÓRIO EM VÍDEO DA PERÍCIA:</strong><br>
-      A resolução oficial do caso já está disponível. Acesse os links abaixo para conferir os relatórios.
+      A resolução oficial do caso já está disponível. Clique no botão abaixo para assistir ao vídeo do relatório.
     </div>
 
-    <!-- BOTÕES ESTILIZADOS -->
-    <div style="margin: 30px 0;">
-      <!-- BOTÃO 1 -->
-      <a href="https://www.youtube.com/watch?v=jVbciqLZKcc" target="_blank" class="btn-link">
+    <!-- BOTÃO ESTILIZADO PARA ABRIR NO YOUTUBE -->
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="https://youtu.be/5XNpxmBq56w?feature=shared" target="_blank" style="
+        display: inline-block;
+        width: 100%;
+        background-color: #ff0000;
+        color: #ffffff;
+        padding: 16px 20px;
+        font-family: inherit;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+      ">
         ▶ ASSISTIR VÍDEO NO YOUTUBE
-      </a>
-
-      <!-- BOTÃO 2 (Altere o link href e o texto abaixo) -->
-      <a href="https://SEU_OUTRO_LINK_AQUI.com" target="_blank" class="btn-link">
-        📄 ACESSAR SEGUNDO RECURSO / LINK
       </a>
     </div>
   </div>
@@ -194,8 +199,8 @@
 
   <!-- LÓGICA DE TROCA AUTOMÁTICA -->
   <script>
-    // Configurado para troca automática no dia 17 de Setembro de 2026
-    const dataRevelacao = new Date(2026, 8, 16, 0, 0, 0); 
+    // Configurado para troca automática na Segunda-feira, 14 de Setembro de 2026
+    const dataRevelacao = new Date(2026, 8, 17, 0, 0, 0); 
     const agora = new Date();
 
     if (agora >= dataRevelacao) {
@@ -206,3 +211,4 @@
 
 </body>
 </html>
+ 
